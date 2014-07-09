@@ -57,7 +57,23 @@
     _mouseJointNode.position = touchLocation;
 }
 
+- (void)releaseCatapult {
+    if (_mouseJoint != nil)
+    {
+        // releases the joint and lets the catapult snap back
+        [_mouseJoint invalidate];
+        _mouseJoint = nil;
+    }
+}
 
+- (void)releaseCatapult {
+    if (_mouseJoint != nil)
+    {
+        // releases the joint and lets the catapult snap back
+        [_mouseJoint invalidate];
+        _mouseJoint = nil;
+    }
+}
 
 - (void)launchPenguin {
     // loads the Penguin.ccb we have set up in Spritebuilder
