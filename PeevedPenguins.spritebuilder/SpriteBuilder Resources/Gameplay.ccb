@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>10</integer>
+	<integer>11</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -30,7 +30,119 @@
 	<key>guides</key>
 	<array/>
 	<key>joints</key>
-	<array/>
+	<array>
+		<dict>
+			<key>UUID</key>
+			<integer>10</integer>
+			<key>baseClass</key>
+			<string>CCPhysicsPivotJoint</string>
+			<key>children</key>
+			<array/>
+			<key>customClass</key>
+			<string></string>
+			<key>displayName</key>
+			<string>CCPhysicsPivotJoint</string>
+			<key>memberVarAssignmentName</key>
+			<string></string>
+			<key>memberVarAssignmentType</key>
+			<integer>1</integer>
+			<key>properties</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>position</string>
+					<key>type</key>
+					<string>Position</string>
+					<key>value</key>
+					<array>
+						<real>232</real>
+						<real>95</real>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>bodyA</string>
+					<key>type</key>
+					<string>NodeReference</string>
+					<key>value</key>
+					<integer>5</integer>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>bodyB</string>
+					<key>type</key>
+					<string>NodeReference</string>
+					<key>value</key>
+					<integer>4</integer>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>collideBodies</string>
+					<key>type</key>
+					<string>Check</string>
+					<key>value</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>anchorA</string>
+					<key>type</key>
+					<string>Point</string>
+					<key>value</key>
+					<array>
+						<real>8.29296875</real>
+						<real>1.53515625</real>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>breakingForce</string>
+					<key>type</key>
+					<string>FloatCheck</string>
+					<key>value</key>
+					<array>
+						<real>100</real>
+						<false/>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>maxForce</string>
+					<key>type</key>
+					<string>FloatCheck</string>
+					<key>value</key>
+					<array>
+						<real>100</real>
+						<false/>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>dampedSpringStiffness</string>
+					<key>type</key>
+					<string>Float</string>
+					<key>value</key>
+					<real>4</real>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>motorMaxForce</string>
+					<key>type</key>
+					<string>FloatCheck</string>
+					<key>value</key>
+					<array>
+						<real>100</real>
+						<false/>
+					</array>
+				</dict>
+			</array>
+			<key>selected</key>
+			<true/>
+		</dict>
+	</array>
 	<key>jsControlled</key>
 	<false/>
 	<key>nodeGraph</key>
@@ -324,8 +436,8 @@
 									<key>points</key>
 									<array>
 										<array>
-											<real>0.48828125</real>
-											<real>-0.3125</real>
+											<real>1.5390625</real>
+											<real>-0.78515625</real>
 										</array>
 										<array>
 											<real>1.44140625</real>
@@ -348,16 +460,16 @@
 											<real>124.58596801757812</real>
 										</array>
 										<array>
-											<real>33.24609375</real>
-											<real>104.53128051757812</real>
+											<real>34.16796875</real>
+											<real>106.44924926757812</real>
 										</array>
 										<array>
-											<real>17.19140625</real>
-											<real>110.2734375</real>
+											<real>15.0703125</real>
+											<real>112.36331176757812</real>
 										</array>
 										<array>
-											<real>14.015609741210938</real>
-											<real>-1.359375</real>
+											<real>15.4609375</real>
+											<real>-1.1757659912109375</real>
 										</array>
 									</array>
 									<key>polygons</key>
@@ -368,26 +480,26 @@
 												<real>138.2890625</real>
 											</array>
 											<array>
-												<real>0.48828125</real>
-												<real>-0.3125</real>
+												<real>1.5390625</real>
+												<real>-0.78515625</real>
 											</array>
 											<array>
-												<real>14.015609741210938</real>
-												<real>-1.359375</real>
+												<real>15.4609375</real>
+												<real>-1.1757659912109375</real>
 											</array>
 											<array>
-												<real>17.19140625</real>
-												<real>110.2734375</real>
+												<real>15.0703125</real>
+												<real>112.36331176757812</real>
 											</array>
 										</array>
 										<array>
 											<array>
-												<real>17.19140625</real>
-												<real>110.2734375</real>
+												<real>15.0703125</real>
+												<real>112.36331176757812</real>
 											</array>
 											<array>
-												<real>33.24609375</real>
-												<real>104.53128051757812</real>
+												<real>34.16796875</real>
+												<real>106.44924926757812</real>
 											</array>
 											<array>
 												<real>41.1171875</real>
@@ -520,7 +632,7 @@
 									<key>density</key>
 									<real>1</real>
 									<key>dynamic</key>
-									<true/>
+									<false/>
 									<key>elasticity</key>
 									<real>0.30000001192092896</real>
 									<key>friction</key>
@@ -1176,8 +1288,6 @@
 								<real>0.5</real>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
