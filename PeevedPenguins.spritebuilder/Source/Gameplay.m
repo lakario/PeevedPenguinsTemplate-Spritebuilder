@@ -8,6 +8,7 @@
 
 #import "Gameplay.h"
 #import "CCPhysics+ObjectiveChipmunk.h"
+#import "Penguin.h"
 
 @implementation Gameplay {
     CCPhysicsNode *_physicsNode;
@@ -17,7 +18,7 @@
     CCNode *_pullbackNode;
     CCNode *_mouseJointNode;
     CCPhysicsJoint *_mouseJoint;
-    CCNode *_currentPenguin;
+    Penguin *_currentPenguin;
     CCPhysicsJoint *_penguinCatapultJoint;
     CCAction *_followPenguin;
 }
@@ -44,31 +45,33 @@ static const float MIN_SPEED = 2.f;
 
 - (void)update:(CCTime)delta
 {
-    float penguinSpeed = ccpLength(_currentPenguin.physicsBody.velocity);
-    
-    CCLOG(@"Penguin Speed: %f", penguinSpeed);
-    
-    // if speed is below minimum speed, assume this attempt is over
-    if (penguinSpeed < MIN_SPEED){
-        [self nextAttempt];
-        CCLOG(@"next attempt 1");
-        return;
-    }
-    
-    int xMin = _currentPenguin.boundingBox.origin.x;
-    
-    if (xMin < self.boundingBox.origin.x) {
-        [self nextAttempt];
-        CCLOG(@"next attempt 2");
-        return;
-    }
-    
-    int xMax = xMin + _currentPenguin.boundingBox.size.width;
-    
-    if (xMax > (self.boundingBox.origin.x + self.boundingBox.size.width)) {
-        [self nextAttempt];
-        CCLOG(@"next attempt 3");
-        return;
+    if (_currentPenguin.launched) {
+        float penguinSpeed = ccpLength(_currentPenguin.physicsBody.velocity);
+        
+        CCLOG(@"Penguin Speed: %f", penguinSpeed);
+        
+        // if speed is below minimum speed, assume this attempt is over
+        if (penguinSpeed < MIN_SPEED){
+            [self nextAttempt];
+            CCLOG(@"next attempt 1");
+            return;
+        }
+        
+        int xMin = _currentPenguin.boundingBox.origin.x;
+        
+        if (xMin < self.boundingBox.origin.x) {
+            [self nextAttempt];
+            CCLOG(@"next attempt 2");
+            return;
+        }
+        
+        int xMax = xMin + _currentPenguin.boundingBox.size.width;
+        
+        if (xMax > (self.boundingBox.origin.x + self.boundingBox.size.width)) {
+            [self nextAttempt];
+            CCLOG(@"next attempt 3");
+            return;
+        }
     }
 }
 
@@ -87,7 +90,7 @@ static const float MIN_SPEED = 2.f;
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0, 0) anchorB:ccp(34, 138) restLength:0.f stiffness:3000.f damping:150.f];
         
         // create a penguin from the ccb-file
-        _currentPenguin = [CCBReader load:@"Penguin"];
+        _currentPenguin = (Penguin*)[CCBReader load:@"Penguin"];
         // initially position it on the scoop. 34,138 is the position in the node space of the _catapultArm
         CGPoint penguinPosition = [_catapultArm convertToWorldSpace:ccp(34, 138)];
         // transform the world position to the node space to which the penguin will be added (_physicsNode)
@@ -138,6 +141,8 @@ static const float MIN_SPEED = 2.f;
         // follow the flying penguin
         _followPenguin = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
         [_contentNode runAction:_followPenguin];
+        
+        _currentPenguin.launched = TRUE;
     }
 }
 
