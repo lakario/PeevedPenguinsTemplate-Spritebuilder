@@ -48,12 +48,9 @@ static const float MIN_SPEED = 2.f;
     if (_currentPenguin.launched) {
         float penguinSpeed = ccpLength(_currentPenguin.physicsBody.velocity);
         
-        CCLOG(@"Penguin Speed: %f", penguinSpeed);
-        
         // if speed is below minimum speed, assume this attempt is over
         if (penguinSpeed < MIN_SPEED){
             [self nextAttempt];
-            CCLOG(@"next attempt 1");
             return;
         }
         
@@ -61,7 +58,6 @@ static const float MIN_SPEED = 2.f;
         
         if (xMin < self.boundingBox.origin.x) {
             [self nextAttempt];
-            CCLOG(@"next attempt 2");
             return;
         }
         
@@ -69,7 +65,6 @@ static const float MIN_SPEED = 2.f;
         
         if (xMax > (self.boundingBox.origin.x + self.boundingBox.size.width)) {
             [self nextAttempt];
-            CCLOG(@"next attempt 3");
             return;
         }
     }
