@@ -44,8 +44,12 @@ static const float MIN_SPEED = 2.f;
 
 - (void)update:(CCTime)delta
 {
+    float penguinSpeed = ccpLength(_currentPenguin.physicsBody.velocity);
+    
+    CCLOG(@"Penguin Speed: %f", penguinSpeed);
+    
     // if speed is below minimum speed, assume this attempt is over
-    if (ccpLength(_currentPenguin.physicsBody.velocity) < MIN_SPEED){
+    if (penguinSpeed < MIN_SPEED){
         [self nextAttempt];
         CCLOG(@"next attempt 1");
         return;
